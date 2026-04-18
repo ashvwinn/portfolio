@@ -1,0 +1,373 @@
+{
+  "picture": {
+    "hidden": false,
+    "url": "",
+    "size": 80,
+    "rotation": 0,
+    "aspectRatio": 1,
+    "borderRadius": 0,
+    "borderColor": "rgba(0, 0, 0, 0.5)",
+    "borderWidth": 0,
+    "shadowColor": "rgba(0, 0, 0, 0.5)",
+    "shadowWidth": 0
+  },
+  "basics": {
+    "name": "Ashvin Jangid",
+    "headline": "Backed Focused Full-Stack Developer",
+    "email": "ashvinjangid10@gmail.com",
+    "phone": "+91 6376805209",
+    "location": "Rajasthan, Jaipur",
+    "website": {
+      "url": "",
+      "label": ""
+    },
+    "customFields": []
+  },
+  "summary": {
+    "title": "",
+    "columns": 1,
+    "hidden": false,
+    "content": "<p>Backend-focused developer with hands-on experience in Go, Node.js, React, and SQL/NoSQL databases. Builds<br>maintainable APIs and full-stack applications with emphasis on clean architecture, performance, and practical<br>product development.</p>"
+  },
+  "sections": {
+    "profiles": {
+      "title": "",
+      "columns": 2,
+      "hidden": false,
+      "items": [
+        {
+          "id": "019d828e-47f2-7779-b573-08978d65d006",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "icon": "github-logo",
+          "network": "Github",
+          "username": "ashvwinn",
+          "website": {
+            "url": "https://github.com/ashvwinn",
+            "label": ""
+          }
+        },
+        {
+          "id": "019d8289-e95c-711f-8403-4d523da5def0",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "icon": "linkedin-logo",
+          "network": "LinkedIn",
+          "username": "ashvwinn",
+          "website": {
+            "url": "https://www.linkedin.com/in/ashvwinn/",
+            "label": ""
+          }
+        }
+      ]
+    },
+    "experience": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    },
+    "education": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": [
+        {
+          "id": "019d828f-598f-76ef-9541-cbba9dc48bf4",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "school": "Poornima University",
+          "degree": "B. Tech",
+          "area": "Computer Science Engineering",
+          "grade": "",
+          "location": "Rajasthan, Jaipur",
+          "period": "2023-2027 (Ongoing)",
+          "website": {
+            "url": "https://poornima.edu.in/",
+            "label": ""
+          },
+          "description": ""
+        },
+        {
+          "id": "019d82aa-aea2-72da-a0d0-645be88c1aac",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "school": "Archana Children's Academy",
+          "degree": "",
+          "area": "12th",
+          "grade": "82.4%",
+          "location": "",
+          "period": "2022-2023",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": ""
+        }
+      ]
+    },
+    "projects": {
+      "title": "",
+      "columns": 2,
+      "hidden": false,
+      "items": [
+        {
+          "id": "019d8291-43a4-755a-8d34-6a106a9e2090",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "name": "UniCRM",
+          "period": "",
+          "website": {
+            "url": "",
+            "label": "Backend"
+          },
+          "description": "<ul><li><p>Built a cross-platform CRM desktop application with Tauri, React, and Go.</p></li><li><p>Designed REST APIs for client management and kept the frontend/backend architecture modular.</p></li></ul><p><a target=\"_blank\" rel=\"noopener nofollow\" href=\"https://github.com/ashvwinn/uniref-app\">Frontend</a></p><p><a target=\"_blank\" rel=\"noopener nofollow\" href=\"https://github.com/ashvwinn/uniref-app-api\">Backend</a></p>"
+        },
+        {
+          "id": "019d829a-8c73-70db-87b9-aa7199d0ef3a",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "name": "Snippetbox",
+          "period": "",
+          "website": {
+            "url": "https://github.com/ashvwinn/snippetbox-mongo",
+            "label": ""
+          },
+          "description": "<ul><li><p>Developed a Go web app for storing and managing code snippets with MongoDB.</p></li><li><p>Implemented routing, middleware, sessions, and templates using idiomatic Go patterns.</p></li></ul><p></p>"
+        },
+        {
+          "id": "019d829d-a237-7469-aea1-3b58e0e3feae",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "name": "Greenlight",
+          "period": "",
+          "website": {
+            "url": "https://github.com/ashvwinn/greenlight",
+            "label": ""
+          },
+          "description": "<ul><li><p>Built a Go REST API with PostgreSQL supporting CRUD, filtering, sorting, and pagination.</p></li><li><p>Added token-based authentication, rate limiting, and structured error handling.</p></li></ul><p></p>"
+        },
+        {
+          "id": "019d829e-b85c-775e-9b93-8b86c24546fa",
+          "hidden": false,
+          "options": {
+            "showLinkInTitle": false
+          },
+          "name": "Click Remember",
+          "period": "",
+          "website": {
+            "url": "https://github.com/ashvwinn/memory-card-game",
+            "label": ""
+          },
+          "description": "<ul><li><p>Built a React memory game with shuffle logic, responsive UI, and hook-based state management.</p></li></ul><p></p>"
+        }
+      ]
+    },
+    "skills": {
+      "title": "",
+      "columns": 2,
+      "hidden": false,
+      "items": [
+        {
+          "id": "019d829f-4bad-77f8-840f-dc0271e6b604",
+          "hidden": false,
+          "icon": "acorn",
+          "name": "Languages & Frameworks",
+          "proficiency": "",
+          "level": 0,
+          "keywords": [
+            "Go",
+            "Python",
+            "Javascript",
+            "React",
+            "Node.js",
+            "Express.js"
+          ]
+        },
+        {
+          "id": "019d82a0-f980-73ef-a5aa-71a2aa2f5b3a",
+          "hidden": false,
+          "icon": "acorn",
+          "name": "Database & Tools",
+          "proficiency": "",
+          "level": 0,
+          "keywords": [
+            "PostgreSQL",
+            "MySQL",
+            "MongoDB",
+            "Prisma"
+          ]
+        },
+        {
+          "id": "019d82a5-b34a-70de-97ef-c4fff1c73fb9",
+          "hidden": false,
+          "icon": "acorn",
+          "name": "Systems",
+          "proficiency": "",
+          "level": 0,
+          "keywords": [
+            "Linux",
+            "CLI",
+            "Server Environment",
+            "Deployment Basics",
+            "Docker Basics"
+          ]
+        },
+        {
+          "id": "019d82a8-073f-7242-85ad-24c9187db5ab",
+          "hidden": false,
+          "icon": "acorn",
+          "name": "Concepts",
+          "proficiency": "",
+          "level": 0,
+          "keywords": [
+            "REST APIS",
+            "Authentication",
+            "Rate Limiting",
+            "Pagination"
+          ]
+        },
+        {
+          "id": "019d82a7-6eeb-7207-9879-ff3e5dc3107f",
+          "hidden": false,
+          "icon": "acorn",
+          "name": "Others",
+          "proficiency": "",
+          "level": 0,
+          "keywords": [
+            "Tauri (Desktop App Development)"
+          ]
+        }
+      ]
+    },
+    "languages": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    },
+    "interests": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    },
+    "awards": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    },
+    "certifications": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    },
+    "publications": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    },
+    "volunteer": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    },
+    "references": {
+      "title": "",
+      "columns": 1,
+      "hidden": false,
+      "items": []
+    }
+  },
+  "customSections": [],
+  "metadata": {
+    "template": "onyx",
+    "layout": {
+      "sidebarWidth": 35.04,
+      "pages": [
+        {
+          "fullWidth": false,
+          "main": [
+            "profiles",
+            "summary",
+            "education",
+            "experience",
+            "projects",
+            "volunteer",
+            "references"
+          ],
+          "sidebar": [
+            "skills",
+            "certifications",
+            "awards",
+            "languages",
+            "interests",
+            "publications"
+          ]
+        }
+      ]
+    },
+    "css": {
+      "enabled": false,
+      "value": ""
+    },
+    "page": {
+      "gapX": 4,
+      "gapY": 6,
+      "marginX": 14,
+      "marginY": 12,
+      "format": "a4",
+      "locale": "en-US",
+      "hideIcons": false
+    },
+    "design": {
+      "level": {
+        "icon": "star",
+        "type": "circle"
+      },
+      "colors": {
+        "primary": "rgba(21, 93, 252, 1)",
+        "text": "rgba(0, 0, 0, 1)",
+        "background": "rgba(255, 255, 255, 1)"
+      }
+    },
+    "typography": {
+      "body": {
+        "fontFamily": "IBM Plex Serif",
+        "fontWeights": [
+          "400",
+          "500"
+        ],
+        "fontSize": 10,
+        "lineHeight": 1.5
+      },
+      "heading": {
+        "fontFamily": "IBM Plex Serif",
+        "fontWeights": [
+          "600"
+        ],
+        "fontSize": 14,
+        "lineHeight": 1.5
+      }
+    },
+    "notes": ""
+  }
+}
