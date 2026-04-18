@@ -160,11 +160,11 @@ export function Hero3D() {
       </Parallax>
 
       <ContactShadows
-        position={[0, -2, 0]}
-        opacity={0.35}
-        scale={10}
-        blur={2.4}
-        far={4}
+        position={[0, -2.1, 0]}
+        opacity={0.3}
+        scale={5}
+        blur={2.6}
+        far={2.4}
         color="#0b0b0d"
       />
 

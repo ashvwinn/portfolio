@@ -58,7 +58,7 @@ export function Hero() {
           </div>
 
           <div className="hero__visual">
-            <div className="hero__canvas">
+            <div className="hero__canvas-frame">
               <Hero3D />
             </div>
             <div className="hero__visual-label">
