@@ -1,42 +1,57 @@
 import { Canvas, useFrame } from '@react-three/fiber'
+import { Edges } from '@react-three/drei'
 import { useEffect, useRef, useState } from 'react'
 import type { Mesh } from 'three'
 
-type ShapeKind = 'knot' | 'torus' | 'box' | 'octa' | 'sphere' | 'tet' | 'dodeca'
+/**
+ * Only faceted polyhedra here — on purpose. Smooth primitives (torus,
+ * knot, sphere) render dozens of triangle edges through drei's <Edges>
+ * and read as a dense mesh; polyhedra render only their true geometric
+ * edges and stay clean, matching the hero obsidian.
+ *
+ * Note: icosahedron is intentionally reserved for the hero obsidian so
+ * the marquee shape isn't repeated in the project grid.
+ */
+type ShapeKind = 'octa' | 'box' | 'dodeca' | 'tet'
 
 type Props = {
   kind: ShapeKind
-  wireframe?: boolean
 }
 
-function Geometry({ kind, wireframe }: Props) {
+function Geometry({ kind }: Props) {
   const ref = useRef<Mesh>(null!)
 
   useFrame((state, delta) => {
     if (!ref.current) return
-    ref.current.rotation.x += delta * 0.4
-    ref.current.rotation.y += delta * 0.55
+    ref.current.rotation.x += delta * 0.35
+    ref.current.rotation.y += delta * 0.5
     const t = state.clock.elapsedTime
     ref.current.position.y = Math.sin(t * 1.2) * 0.08
   })
 
+  const geom = (() => {
+    switch (kind) {
+      case 'octa':
+        return <octahedronGeometry args={[1.05, 0]} />
+      case 'box':
+        return <boxGeometry args={[1.15, 1.15, 1.15]} />
+      case 'dodeca':
+        return <dodecahedronGeometry args={[0.95, 0]} />
+      case 'tet':
+        return <tetrahedronGeometry args={[1.2, 0]} />
+    }
+  })()
+
   return (
-    <mesh ref={ref} scale={1.15}>
-      {kind === 'knot' && <torusKnotGeometry args={[0.65, 0.22, 200, 32]} />}
-      {kind === 'torus' && <torusGeometry args={[0.8, 0.26, 24, 80]} />}
-      {kind === 'box' && <boxGeometry args={[1.1, 1.1, 1.1]} />}
-      {kind === 'octa' && <octahedronGeometry args={[1, 0]} />}
-      {kind === 'sphere' && <sphereGeometry args={[0.9, 48, 48]} />}
-      {kind === 'tet' && <tetrahedronGeometry args={[1.1, 0]} />}
-      {kind === 'dodeca' && <dodecahedronGeometry args={[0.95, 0]} />}
+    <mesh ref={ref}>
+      {geom}
       <meshStandardMaterial
         color="#0b0b0d"
-        emissive="#ff4d0a"
-        emissiveIntensity={wireframe ? 0.55 : 0.14}
-        metalness={0.75}
+        metalness={0.85}
         roughness={0.28}
-        wireframe={wireframe}
+        envMapIntensity={0.9}
       />
+      <Edges threshold={1} color="#ff4d0a" scale={1.008} />
     </mesh>
   )
 }
@@ -69,9 +84,10 @@ export function ProjectShape(props: Props) {
           <directionalLight position={[3, 4, 2]} intensity={1.1} />
           <directionalLight
             position={[-3, -2, -2]}
-            intensity={0.4}
+            intensity={0.45}
             color="#ff4d0a"
           />
+          <pointLight position={[0, 0, 3]} intensity={0.35} color="#ff9a3c" />
           <Geometry {...props} />
         </Canvas>
       )}

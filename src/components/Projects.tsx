@@ -1,7 +1,7 @@
 import { projects } from '../data/resume'
 import { ProjectShape } from '../three/ProjectShape'
 
-const SHAPES = ['knot', 'octa', 'torus', 'dodeca', 'tet', 'sphere', 'box'] as const
+const SHAPES = ['tet', 'octa', 'box', 'dodeca'] as const
 
 function renderName(name: string, i: number) {
   const words = name.split(' ')
@@ -54,10 +54,7 @@ export function Projects() {
                 <h3 className="project__name">{renderName(p.name, i)}</h3>
 
                 <div className="project__shape" aria-hidden>
-                  <ProjectShape
-                    kind={shape}
-                    wireframe={i % 3 === 1}
-                  />
+                  <ProjectShape kind={shape} />
                 </div>
 
                 <p className="project__desc">{p.description}</p>
