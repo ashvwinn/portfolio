@@ -3,12 +3,22 @@ import { ContactShadows, Edges, Environment } from '@react-three/drei'
 import { useRef, useMemo } from 'react'
 import type { Mesh, Group } from 'three'
 import * as THREE from 'three'
+import { useTheme } from '../theme'
 
 /**
  * Obsidian core — the main piece. Dark metallic icosahedron with
  * a glowing amber wireframe overlay + a tiny amber core nested inside.
  */
 function Obsidian() {
+  const theme = useTheme()
+  const isDark = theme === 'dark'
+  // In dark mode, a near-black obsidian disappears against the ink background.
+  // Flip to a warm bone/cream body so the piece still reads as a solid mass,
+  // keeping the amber edges + inner core for continuity.
+  const bodyColor = isDark ? '#e8dfc6' : '#0b0b0d'
+  const bodyMetalness = isDark ? 0.55 : 0.9
+  const bodyRoughness = isDark ? 0.35 : 0.22
+
   const groupRef = useRef<Group>(null!)
   const innerRef = useRef<Mesh>(null!)
   const edgesRef = useRef<Mesh>(null!)
@@ -38,9 +48,9 @@ function Obsidian() {
       <mesh>
         <icosahedronGeometry args={[1.4, 0]} />
         <meshStandardMaterial
-          color="#0b0b0d"
-          metalness={0.9}
-          roughness={0.22}
+          color={bodyColor}
+          metalness={bodyMetalness}
+          roughness={bodyRoughness}
           envMapIntensity={1.2}
         />
         <Edges threshold={1} color="#ff4d0a" scale={1.01} />
@@ -72,6 +82,10 @@ type Orbiter = {
 }
 
 function Orbiter({ data }: { data: Orbiter }) {
+  const theme = useTheme()
+  const isDark = theme === 'dark'
+  const orbiterSolid = isDark ? '#d4cbac' : '#1f1d22'
+  const orbiterWire = isDark ? '#ede6d1' : '#0b0b0d'
   const ref = useRef<Mesh>(null!)
   useFrame((state) => {
     if (!ref.current) return
@@ -91,7 +105,7 @@ function Orbiter({ data }: { data: Orbiter }) {
       {data.kind === 'octa' && <octahedronGeometry args={[1, 0]} />}
       {data.kind === 'cyl' && <cylinderGeometry args={[0.35, 0.35, 1, 24]} />}
       <meshStandardMaterial
-        color={data.wire ? '#0b0b0d' : '#1f1d22'}
+        color={data.wire ? orbiterWire : orbiterSolid}
         wireframe={data.wire}
         metalness={0.8}
         roughness={0.3}
@@ -143,15 +157,18 @@ function Parallax({ children }: { children: React.ReactNode }) {
 }
 
 export function Hero3D() {
+  const theme = useTheme()
+  const isDark = theme === 'dark'
+
   return (
     <Canvas
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       camera={{ position: [0, 0.2, 6], fov: 38 }}
     >
-      <ambientLight intensity={0.4} />
-      <directionalLight position={[4, 6, 4]} intensity={1.4} />
-      <directionalLight position={[-5, -2, -3]} intensity={0.5} color="#ff4d0a" />
+      <ambientLight intensity={isDark ? 0.55 : 0.4} />
+      <directionalLight position={[4, 6, 4]} intensity={isDark ? 1.1 : 1.4} />
+      <directionalLight position={[-5, -2, -3]} intensity={isDark ? 0.7 : 0.5} color="#ff4d0a" />
       <pointLight position={[0, 0, 3]} intensity={0.6} color="#ff9a3c" />
 
       <Parallax>
@@ -161,14 +178,14 @@ export function Hero3D() {
 
       <ContactShadows
         position={[0, -2.1, 0]}
-        opacity={0.3}
+        opacity={isDark ? 0.55 : 0.3}
         scale={5}
         blur={2.6}
         far={2.4}
-        color="#0b0b0d"
+        color={isDark ? '#000000' : '#0b0b0d'}
       />
 
-      <Environment preset="city" environmentIntensity={0.6} />
+      <Environment preset={isDark ? 'night' : 'city'} environmentIntensity={isDark ? 0.35 : 0.6} />
     </Canvas>
   )
 }

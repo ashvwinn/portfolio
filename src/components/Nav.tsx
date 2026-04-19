@@ -1,4 +1,5 @@
 import { Clock } from './Clock'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Nav() {
   return (
@@ -12,7 +13,10 @@ export function Nav() {
         <a href="#education">Record</a>
         <a href="#contact">Contact</a>
       </nav>
-      <Clock />
+      <div className="nav__end">
+        <ThemeToggle />
+        <Clock />
+      </div>
     </header>
   )
 }
