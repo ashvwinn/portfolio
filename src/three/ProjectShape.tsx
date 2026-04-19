@@ -2,6 +2,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Edges } from '@react-three/drei'
 import { useEffect, useRef, useState } from 'react'
 import type { Mesh } from 'three'
+import { useTheme } from '../theme'
 
 /**
  * Only faceted polyhedra here — on purpose. Smooth primitives (torus,
@@ -19,6 +20,14 @@ type Props = {
 }
 
 function Geometry({ kind }: Props) {
+  const theme = useTheme()
+  const isDark = theme === 'dark'
+  // Project cards use var(--paper) as background, which flips with theme.
+  // The shape body must contrast against whichever side of the flip we're on.
+  const bodyColor = isDark ? '#ede6d1' : '#0b0b0d'
+  const bodyMetalness = isDark ? 0.55 : 0.85
+  const bodyRoughness = isDark ? 0.35 : 0.28
+
   const ref = useRef<Mesh>(null!)
 
   useFrame((state, delta) => {
@@ -46,9 +55,9 @@ function Geometry({ kind }: Props) {
     <mesh ref={ref}>
       {geom}
       <meshStandardMaterial
-        color="#0b0b0d"
-        metalness={0.85}
-        roughness={0.28}
+        color={bodyColor}
+        metalness={bodyMetalness}
+        roughness={bodyRoughness}
         envMapIntensity={0.9}
       />
       <Edges threshold={1} color="#ff4d0a" scale={1.008} />
