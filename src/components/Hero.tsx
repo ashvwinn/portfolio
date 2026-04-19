@@ -58,9 +58,26 @@ export function Hero() {
           </div>
 
           <div className="hero__visual">
+            <div className="hero__visual-header">
+              <span className="hero__visual-tag">
+                <span className="hero__visual-tag-dot" aria-hidden />
+                Live render · WebGL
+              </span>
+              <span className="hero__visual-coords" aria-hidden>
+                <span>26.9124° N</span>
+                <span className="hero__visual-coords-sep">/</span>
+                <span>75.7873° E</span>
+              </span>
+            </div>
+
             <div className="hero__canvas-frame">
+              <span className="hero__corner hero__corner--tl" aria-hidden />
+              <span className="hero__corner hero__corner--tr" aria-hidden />
+              <span className="hero__corner hero__corner--bl" aria-hidden />
+              <span className="hero__corner hero__corner--br" aria-hidden />
               <Hero3D />
             </div>
+
             <div className="hero__visual-label">
               <span>[ 001 ]</span>
               <span>Obsidian / amber core</span>

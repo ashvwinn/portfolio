@@ -487,6 +487,54 @@ ol {
   align-self: stretch;
 }
 
+/* Technical "spec sheet" header above the canvas — fills the negative
+   space the tall left column creates, and reinforces the Specimen Nº 01
+   editorial frame established in .hero__meta. */
+.hero__visual-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.hero__visual-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+}
+
+.hero__visual-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--flare);
+  box-shadow: var(--flare-glow);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hero__visual-coords {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+
+.hero__visual-coords-sep {
+  opacity: 0.4;
+}
+
 .hero__canvas-frame {
   position: relative;
   width: 100%;
@@ -496,9 +544,39 @@ ol {
   z-index: 1;
 }
 
-.hero__canvas-frame > * {
+/* Viewfinder corner brackets — frame the 3D specimen like a CAD
+   drawing. The L-marks are drawn with two borders per corner. */
+.hero__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 2;
+  pointer-events: none;
+  color: var(--ink);
+  opacity: 0.5;
+}
+
+.hero__corner--tl { top: 0; left: 0; border-top: 1px solid currentColor; border-left: 1px solid currentColor; }
+.hero__corner--tr { top: 0; right: 0; border-top: 1px solid currentColor; border-right: 1px solid currentColor; }
+.hero__corner--bl { bottom: 0; left: 0; border-bottom: 1px solid currentColor; border-left: 1px solid currentColor; }
+.hero__corner--br { bottom: 0; right: 0; border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; }
+
+/* The Canvas itself (and the flare haze) must stretch edge-to-edge,
+   but the corner marks opt out so they stay pinned to corners. */
+.hero__canvas-frame > *:not(.hero__corner) {
   position: absolute;
   inset: 0;
+}
+
+@media (max-width: 540px) {
+  .hero__visual-header {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+  }
+  .hero__corner {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 .hero__canvas-frame::before {

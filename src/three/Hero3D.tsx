@@ -46,7 +46,7 @@ function Obsidian() {
     <group ref={groupRef}>
       {/* solid obsidian body */}
       <mesh>
-        <icosahedronGeometry args={[1.4, 0]} />
+        <icosahedronGeometry args={[1.75, 0]} />
         <meshStandardMaterial
           color={bodyColor}
           metalness={bodyMetalness}
@@ -58,7 +58,7 @@ function Obsidian() {
 
       {/* inner glowing amber tetra, visible through facets */}
       <mesh ref={innerRef}>
-        <tetrahedronGeometry args={[0.55, 0]} />
+        <tetrahedronGeometry args={[0.7, 0]} />
         <meshStandardMaterial
           color="#ff4d0a"
           emissive="#ff4d0a"
@@ -164,7 +164,7 @@ export function Hero3D() {
     <Canvas
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      camera={{ position: [0, 0.2, 6], fov: 38 }}
+      camera={{ position: [0, 0.2, 5.2], fov: 40 }}
     >
       <ambientLight intensity={isDark ? 0.55 : 0.4} />
       <directionalLight position={[4, 6, 4]} intensity={isDark ? 1.1 : 1.4} />
@@ -177,7 +177,7 @@ export function Hero3D() {
       </Parallax>
 
       <ContactShadows
-        position={[0, -2.1, 0]}
+        position={[0, -2.35, 0]}
         opacity={isDark ? 0.55 : 0.3}
         scale={5}
         blur={2.6}
