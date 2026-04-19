@@ -971,89 +971,161 @@ ol {
    SKILLS
    ============================================================ */
 
-.skills {
+/* Spec-sheet table layout — turns the stack into a technical
+   manifest. Each row: mono index, serif category (last word
+   italicised amber), chip row for items, mono count on the right.
+   Hover drops an amber vertical rule to the left of the row. */
+.skills-table {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.skills-table__head,
+.skills-row {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1px;
-  background: var(--rule);
-  border-top: 1px solid var(--rule);
+  grid-template-columns: 64px minmax(180px, 1.05fr) 2.8fr 64px;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+  padding: 16px 0;
+}
+
+.skills-table__head {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-block: 14px;
   border-bottom: 1px solid var(--rule);
 }
 
-.skill {
-  grid-column: span 4;
-  background: var(--paper);
-  padding: 32px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-height: 260px;
-  transition: background 0.3s ease;
+.skills-table__head > *:last-child {
+  text-align: right;
+}
+
+.skills-row {
   position: relative;
-  overflow: hidden;
+  min-height: 88px;
+  border-bottom: 1px dashed var(--rule-soft);
+  transition:
+    padding-left 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 0.3s ease;
 }
 
-.skill:hover {
-  background: var(--cream);
+.skills-row:last-child {
+  border-bottom: 0;
 }
 
-.skill::before {
-  content: attr(data-idx);
+.skills-row::before {
+  content: '';
   position: absolute;
-  top: 18px;
-  right: 22px;
+  left: -14px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: var(--flare);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.skills-row:hover {
+  padding-left: 14px;
+}
+
+.skills-row:hover::before {
+  transform: scaleY(1);
+}
+
+.skills-row__idx {
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  letter-spacing: 0.2em;
   color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 
-.skill__name {
+.skills-row__name {
   font-family: var(--serif);
-  font-size: clamp(28px, 2.8vw, 42px);
-  line-height: 1.05;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1;
   letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--ink);
 }
 
-.skill__name em {
+.skills-row__name em {
   font-style: italic;
   color: var(--flare);
 }
 
-.skill__keywords {
+.skills-row__items {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 4px;
-  margin-top: auto;
+  gap: 6px;
 }
 
-.skill__keywords li {
+.skills-row__items li {
   font-family: var(--mono);
   font-size: 11px;
   padding: 4px 10px;
   border: 1px solid var(--rule);
   border-radius: 999px;
   letter-spacing: 0.02em;
-  transition: all 0.25s ease;
+  color: var(--muted-strong);
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
-.skill__keywords li:hover {
+.skills-row__items li:hover {
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
   transform: translateY(-2px);
 }
 
-@media (max-width: 900px) {
-  .skill {
-    grid-column: span 12;
-    min-height: 200px;
-  }
+.skills-row__count {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--muted-strong);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
 }
 
-@media (min-width: 901px) and (max-width: 1200px) {
-  .skill {
-    grid-column: span 6;
+.skills-row:hover .skills-row__count {
+  color: var(--flare);
+}
+
+@media (max-width: 900px) {
+  .skills-table__head {
+    display: none;
+  }
+  .skills-row {
+    grid-template-columns: 40px 1fr 40px;
+    grid-template-areas:
+      'idx name  count'
+      'items items items';
+    gap: 10px 14px;
+    padding: 22px 0;
+    min-height: 0;
+  }
+  .skills-row__idx {
+    grid-area: idx;
+  }
+  .skills-row__name {
+    grid-area: name;
+  }
+  .skills-row__items {
+    grid-area: items;
+    margin-top: 4px;
+  }
+  .skills-row__count {
+    grid-area: count;
   }
 }
 
