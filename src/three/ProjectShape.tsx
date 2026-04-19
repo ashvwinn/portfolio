@@ -47,7 +47,7 @@ function Geometry({ kind }: Props) {
       case 'dodeca':
         return <dodecahedronGeometry args={[0.95, 0]} />
       case 'tet':
-        return <tetrahedronGeometry args={[1.2, 0]} />
+        return <tetrahedronGeometry args={[1.05, 0]} />
     }
   })()
 
@@ -69,12 +69,21 @@ export function ProjectShape(props: Props) {
   const wrapRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
+  // One-shot mount: the Canvas is expensive to spin up (WebGL context,
+  // shader compile), so once it's been visible we keep it mounted.
+  // Toggling `visible` on every scroll was causing brief blank frames
+  // as the context was torn down and rebuilt.
   useEffect(() => {
     if (!wrapRef.current) return
     const el = wrapRef.current
     const io = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.1, rootMargin: '200px' },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          io.disconnect()
+        }
+      },
+      { threshold: 0, rootMargin: '300px' },
     )
     io.observe(el)
     return () => io.disconnect()
@@ -85,7 +94,7 @@ export function ProjectShape(props: Props) {
       {visible && (
         <Canvas
           dpr={[1, 1.5]}
-          camera={{ position: [0, 0, 3.2], fov: 40 }}
+          camera={{ position: [0, 0, 3.8], fov: 40 }}
           gl={{ antialias: true, alpha: true }}
           frameloop="always"
         >
